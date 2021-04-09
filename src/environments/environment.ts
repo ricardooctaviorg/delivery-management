@@ -3,8 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production          : false
+  , gateway           : "https://pizzadelivery-services.herokuapp.com"
+  , securityResource  : "/UserDelivery"
+  , deliveryResource  : "/Delivery"
+  , avatarResource    : "/AvatarCatalog"
+  , typeFailResource  : "/TypeFailCatalog"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

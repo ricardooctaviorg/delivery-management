@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Mis ordenes",
+        "icon": "bag",
+        "redirectTo": "/myDelivery/deliveryList/d,e"
+    },
+    {
+        "name": "Mi Configuración",
+        "icon": "build",
+        "redirectTo": "/my-configuration"
+    }
+]
