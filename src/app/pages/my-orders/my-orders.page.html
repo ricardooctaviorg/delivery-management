@@ -1,0 +1,47 @@
+<app-header-menu titleMain="{{titleMain | uppercase}} {{titleSecondary | statusDeliveryTitle }}"></app-header-menu>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [tab]="['orderList/a']">
+        <ion-icon name="{{ iconPendingStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>NUEVAS</ion-label>
+        <ion-badge color="tertiary">{{countPendingStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/b']">
+        <ion-icon name="{{ iconConfirmedStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>CONFIRMADAS</ion-label>
+        <ion-badge color="tertiary">{{countConfirmedStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/a1']">
+        <ion-icon name="{{ iconCanceledStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>CANCELADAS</ion-label>
+        <ion-badge color="tertiary">{{countCanceledStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/c']">
+        <ion-icon name="{{ iconPreparingStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>EN PREPARACIÓN</ion-label>
+        <ion-badge color="tertiary">{{countPreparingStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/d']">
+        <ion-icon name="{{ iconAssignedStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>ASIGNADAS</ion-label>
+        <ion-badge color="tertiary">{{countAssignedStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/e']">
+        <ion-icon name="{{ iconOnWayStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>EN CAMINO</ion-label>
+        <ion-badge color="tertiary">{{countOnWayStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/f']">
+        <ion-icon name="{{ iconCompleteStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>ENTREGADAS</ion-label>
+        <ion-badge color="tertiary">{{countCompleteStatus}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['orderList/f1']">
+        <ion-icon name="{{ iconFailtStatus | statusDeliveryIcon}}"></ion-icon>
+        <ion-label>FALLIDAS</ion-label>
+        <ion-badge color="tertiary">{{countFailtStatus}}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

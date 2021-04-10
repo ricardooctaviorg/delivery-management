@@ -4,12 +4,14 @@ import { StatusDeliveryTitlePipe } from './pipes/status-delivery-title.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { StatusDeliveryIcon } from './pipes/status-delivery-icon.pipe';
 
 @NgModule({
   declarations: [ 
     HeaderMenuComponent
     , StatusDeliveryTitlePipe
     , HeaderComponent
+    , StatusDeliveryIcon
   ],
   imports: [
     CommonModule
@@ -19,6 +21,7 @@ import { IonicModule } from '@ionic/angular';
     HeaderMenuComponent
     , StatusDeliveryTitlePipe
     , HeaderComponent
+    , StatusDeliveryIcon
   ]
 })
 
