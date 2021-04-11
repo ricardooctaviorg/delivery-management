@@ -200,23 +200,39 @@ export class UtilService {
     await toast.present();
   }
 
-  async showAssignAgent(success: number) {
+  async showAssignAgent(success: boolean) {
 
     var messageCurrent  : string = "No se ha podido asignar al repartidor";
-    var typeAlert       : string = "danger";
+    
+    var typeAlert       : string = TOAST_COLOR_SUCCESS_FALSE;
+    var iconToast       : string = TOAST_ICON_SUCCESS_FALSE;
 
-        if (success){
-          typeAlert       = "success";
-          messageCurrent  = "El repartidor se ha asignado correctamente";
-        }
+    if (success){
+      typeAlert = TOAST_COLOR_SUCCESS_TRUE;
+      iconToast = TOAST_ICON_SUCCESS_TRUE;
+      messageCurrent  = "El repartidor se ha asignado correctamente";
+    }
         
         const toast = await this.toastController.create({
-          message: messageCurrent
-          , duration: 3000
-          , color: typeAlert
-          , keyboardClose: true
-          , position: "top"
-          , translucent: false
+          message         : messageCurrent
+          , duration      : TOAST_DURATION
+          , color         : typeAlert
+          , keyboardClose : TOAST_KEYBOARD_CLOSE
+          , position      : TOAST_POSITION
+          , translucent   : TOAST_TRANSLUCENT
+          , buttons       : [
+            {
+              side: 'start',
+              icon: iconToast,
+            },{
+              side: 'end',
+              text: 'CERRAR',
+              role: 'cancel',
+              handler: () => {
+                console.log('Close clicked');
+              }
+            }
+          ]
         });
         toast.present();
   }

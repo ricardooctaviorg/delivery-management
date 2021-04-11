@@ -10,6 +10,7 @@ import { DeliveryManagementService } from '../../../../services/delivery-managem
 import { StatusDelivery } from '../../../../commons/enums/status-delivery.enum';
 import { InfoManagementService } from '../../../../commons/services/info-management.service';
 import { UtilService } from '../../../../commons/services/util.service';
+import { ModalSelectAgentPage } from '../../../modal-select-agent/modal-select-agent.page';
 
 const PAGE_SIZE       = 10;
 const ORDERDATE_DESC  = "orderDate,-1";
@@ -125,21 +126,39 @@ export class DeliveryListComponent implements OnInit {
     await this.storageService.setPizzaDeliverys(this.pizzaDeliveries);
   }
 
+  async presentModal(deliveryId: string): Promise<any> {
+    return new Promise<any>(
+      async resolve => {
+        const modal = await this.modalController.create({
+          component: ModalSelectAgentPage
+          , cssClass: 'my-custom-class'
+          , swipeToClose: true
+          , componentProps: {
+            'deliveryId': deliveryId
+          }
+        });
+        await modal.present();
+        resolve(await modal.onDidDismiss());
+      }
+    );
+  }
+
   async changeDeliveryStatus(deliveryId: string, status: string) {
     if (status == StatusDelivery.DELIVERY_ASSIGNED.toString()) {
-      /*const dataOfModal = await this.presentModal(deliveryId);
+      const dataOfModal = await this.presentModal(deliveryId);
+      console.log("dataOfModal", dataOfModal);
       if (dataOfModal.data.success) {
         dataOfModal.data.pizzaDeliveryUpdated.status.statusId       = status;
         dataOfModal.data.pizzaDeliveryUpdated.status.statusDelivery = StatusDelivery[status];
         this.deliveryManagementService.updateDelivery(dataOfModal.data.pizzaDeliveryUpdated).subscribe(
           data => {
-            this.utilService.showStatus(status, 1);
+            this.utilService.showStatus(status, SUCCESS_TRUE);
             this.doRefresh(null);
           }, err => {
-            this.utilService.showStatus(status, 0);
+            this.utilService.showStatus(status, SUCCESS_FALSE);
           }
         );
-      }*/
+      }
     } else {
       this.pizzaDelivery = this.storageService.getPizzaDeliveryByDeliveryId(deliveryId);
       this.pizzaDelivery.status.statusId        = status;

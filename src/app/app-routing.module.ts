@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'my-orders',
     loadChildren: () => import('./pages/my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
   },
+  {
+    path: 'modal-select-agent',
+    loadChildren: () => import('./pages/modal-select-agent/modal-select-agent.module').then( m => m.ModalSelectAgentPageModule)
+  },
 ];
 
 @NgModule({

@@ -28,7 +28,7 @@ const VERIFYTOKEN = GATEWAY_VALUE
   + SECURITY_RESOURCE;
 
 const GETUSERSBYROLE = GATEWAY_VALUE
-  + SECURITY_RESOURCE;
+  + SECURITY_RESOURCE
   + '/getUsersByRole';
 
 const headers = new HttpHeaders()
