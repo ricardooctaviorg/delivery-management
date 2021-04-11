@@ -5,17 +5,15 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.prod';
 import { StatusDelivery } from '../enums/status-delivery.enum';
 import { ToastController } from '@ionic/angular';
+import { StatusDeliveryIcon } from '../enums/status-delivery-icon.enum';
 
 const PATH_MAINMENU_OPTIONS       = "/assets/json/mainMenu.json";
 const TOAST_DURATION              = 5000;
-const TOAST_TRANSLUCENT           = true;
+const TOAST_TRANSLUCENT           = false;
 const TOAST_POSITION              = "bottom";
 const TOAST_COLOR_SUCCESS_TRUE    = "tertiary";
 const TOAST_COLOR_SUCCESS_FALSE   = "danger";
 const TOAST_KEYBOARD_CLOSE        = false;
-const TOAST_ICON_ONWAY            = "rocket"
-const TOAST_ICON_COMPLETE         = "bag-check"
-const TOAST_ICON_FAIL             = "thumbs-down"
 const TOAST_ICON_SUCCESS_TRUE     = "happy";
 const TOAST_ICON_SUCCESS_FALSE    = "alert";
 
@@ -126,7 +124,7 @@ export class UtilService {
 
   }
 
-  async showStatus(status: string, success: number) {
+  async showStatus(status: string, success: boolean) {
 
     var messageCurrent  : string = "";
     var typeAlert       : string = TOAST_COLOR_SUCCESS_FALSE;
@@ -137,32 +135,42 @@ export class UtilService {
 
       switch (status) {
         case StatusDelivery.DELIVERY_PENDING.toString():
-          if (success)
-            messageCurrent = "Se ha reactivado el pedido";
+          if (success){
+            messageCurrent  = "Se ha reactivado el pedido";
+            iconToast       = StatusDeliveryIcon.DELIVERY_PENDING.toString();
+          }
           else
             messageCurrent = "No se ha podido reactivar el pedido";
           break;
         case StatusDelivery.DELIVERY_CANCELED.toString():
-          if (success)
-            messageCurrent = "Se ha cancelado el pedido";
+          if (success){
+            messageCurrent  = "Se ha cancelado el pedido";
+            iconToast       = StatusDeliveryIcon.DELIVERY_CANCELED.toString();
+          }
           else
             messageCurrent = "No se ha podido cancelar el pedido";
           break;
         case StatusDelivery.DELIVERY_CONFIRMED.toString():
-          if (success)
-            messageCurrent = "Se ha confirmado el pedido";
+          if (success){
+            messageCurrent  = "Se ha confirmado el pedido";
+            iconToast       = StatusDeliveryIcon.DELIVERY_CONFIRMED.toString();
+          }
           else
             messageCurrent = "Se ha confirmado el pedido";
           break;
         case StatusDelivery.DELIVERY_PREPARING.toString():
-          if (success)
-            messageCurrent = "El pedido se ha enviado a preparación";
+          if (success){
+            messageCurrent  = "El pedido se ha enviado a preparación";
+            iconToast       = StatusDeliveryIcon.DELIVERY_PREPARING.toString();
+          }
           else
             messageCurrent = "El pedido no se ha podido enviar a preparación";
           break;
         case StatusDelivery.DELIVERY_ASSIGNED.toString():
-          if (success)
-            messageCurrent = "El pedido se ha asignado al Repartidor";
+          if (success){
+            messageCurrent  = "El pedido se ha asignado al Repartidor";
+            iconToast       = StatusDeliveryIcon.DELIVERY_ASSIGNED.toString();
+          }
           else
             messageCurrent = "No se ha podido asignar el pedido al Repartidor";
           break;

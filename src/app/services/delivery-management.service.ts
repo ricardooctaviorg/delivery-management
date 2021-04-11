@@ -61,7 +61,8 @@ export class DeliveryManagementService {
   public updateDelivery(delivery: PizzaDelivery): Observable<any> {
 
     const headers = new HttpHeaders()
-      .set('x-token', this.storageService.getToken());
+      //.set('x-token', this.storageService.getToken());
+      .set('x-token', '12345');
     const httpOptionsX =
     {
       headers

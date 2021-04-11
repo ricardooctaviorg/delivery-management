@@ -9,11 +9,13 @@ import { StorageService } from '../../../../commons/services/storage.service';
 import { DeliveryManagementService } from '../../../../services/delivery-management.service';
 import { StatusDelivery } from '../../../../commons/enums/status-delivery.enum';
 import { InfoManagementService } from '../../../../commons/services/info-management.service';
+import { UtilService } from '../../../../commons/services/util.service';
 
 const PAGE_SIZE       = 10;
 const ORDERDATE_DESC  = "orderDate,-1";
 
-
+const SUCCESS_TRUE    = true;
+const SUCCESS_FALSE   = false;
 
 @Component({
   selector: 'app-delivery-list',
@@ -58,7 +60,8 @@ export class DeliveryListComponent implements OnInit {
     , private route                             : ActivatedRoute
     , private storageService                    : StorageService
     , public modalController                    : ModalController
-    , private infoManagementService             : InfoManagementService) { }
+    , private infoManagementService             : InfoManagementService
+    , private utilService                       : UtilService) { }
 
   async ngOnInit() {
     this.route.paramMap.subscribe(
@@ -120,6 +123,36 @@ export class DeliveryListComponent implements OnInit {
     this.countFinalyOrders    = 0;
     this.pageCurrent          = 1;
     await this.storageService.setPizzaDeliverys(this.pizzaDeliveries);
+  }
+
+  async changeDeliveryStatus(deliveryId: string, status: string) {
+    if (status == StatusDelivery.DELIVERY_ASSIGNED.toString()) {
+      /*const dataOfModal = await this.presentModal(deliveryId);
+      if (dataOfModal.data.success) {
+        dataOfModal.data.pizzaDeliveryUpdated.status.statusId       = status;
+        dataOfModal.data.pizzaDeliveryUpdated.status.statusDelivery = StatusDelivery[status];
+        this.deliveryManagementService.updateDelivery(dataOfModal.data.pizzaDeliveryUpdated).subscribe(
+          data => {
+            this.utilService.showStatus(status, 1);
+            this.doRefresh(null);
+          }, err => {
+            this.utilService.showStatus(status, 0);
+          }
+        );
+      }*/
+    } else {
+      this.pizzaDelivery = this.storageService.getPizzaDeliveryByDeliveryId(deliveryId);
+      this.pizzaDelivery.status.statusId        = status;
+      this.pizzaDelivery.status.statusDelivery  = StatusDelivery[status];
+      this.deliveryManagementService.updateDelivery(this.pizzaDelivery).subscribe(
+        data => {
+          this.utilService.showStatus(status, SUCCESS_TRUE);
+          this.doRefresh(null);
+        }, err => {
+          this.utilService.showStatus(status, SUCCESS_FALSE);
+        }
+      );
+    }
   }
 
 }
