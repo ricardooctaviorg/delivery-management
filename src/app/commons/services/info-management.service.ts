@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
+import { StatusDeliveryTitlePipe } from '../pipes/status-delivery-title.pipe';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,14 @@ export class InfoManagementService {
   }
 
   detailTitleType       : string = "";
-  statusTitleAndCountS  : string = "";
+  countAllStatusAny     : any;
+  statusTitleString     : string = "";
 
   @Output() change              : EventEmitter<any> = new EventEmitter();
   @Output() detailTypeTitle     : EventEmitter<any> = new EventEmitter();
-  @Output() statusTitleAndCount : EventEmitter<any> = new EventEmitter();
+
+  @Output() countAllStatus      : EventEmitter<any> = new EventEmitter();
+  @Output() statusTitle         : EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -29,9 +33,14 @@ export class InfoManagementService {
     this.detailTypeTitle.emit(this.detailTitleType);
   }
 
-  sendStatusTitleAndCount(statusTitleAndCount: string) {
-    this.statusTitleAndCountS = statusTitleAndCount;
-    this.statusTitleAndCount.emit(this.statusTitleAndCountS);
+  sendCountAllStatus(countAllStatus: any) {
+    this.countAllStatusAny = countAllStatus;
+    this.countAllStatus.emit(this.countAllStatusAny);
+  }
+
+  sendStatusTitle(statusTitle: string) {
+    this.statusTitleString = statusTitle;
+    this.statusTitle.emit(this.statusTitleString);
   }
 
 }

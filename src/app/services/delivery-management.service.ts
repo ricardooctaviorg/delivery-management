@@ -17,6 +17,10 @@ const FINDBYSTATUSDELIVERY = GATEWAY_VALUE
 const UPDATEDELIVERY = GATEWAY_VALUE
   + DELIVERY_RESOURCE;
 
+const COUNTALLSTATUS = GATEWAY_VALUE
+  + DELIVERY_RESOURCE
+  + '/countAllStatus';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +40,8 @@ export class DeliveryManagementService {
     , sort: string): Observable<any> {
 
     const headers = new HttpHeaders()
-      .set('x-token', this.storageService.getToken());
+      //.set('x-token', this.storageService.getToken());
+      .set('x-token', '12345');
     const params = new HttpParams()
       .set('statusId', statusId.toString())
       .set('startDate', startDate.toISOString())
@@ -62,6 +67,25 @@ export class DeliveryManagementService {
       headers
     };
     return this.httpClient.post<any>(`${UPDATEDELIVERY}/`, delivery, httpOptionsX)
+  }
+
+  public countAllStatus(
+    startDate: Date
+    , endDate: Date): Observable<any> {
+
+    const headers = new HttpHeaders()
+      //.set('x-token', this.storageService.getToken());
+      .set('x-token', '12345');
+    const params = new HttpParams()
+      .set('startDate', startDate.toISOString())
+      .set('endDate', endDate.toISOString());
+
+    const httpOptionsX =
+    {
+      headers
+      , params
+    };
+    return this.httpClient.get<any>(`${COUNTALLSTATUS}`, httpOptionsX);
   }
 
 

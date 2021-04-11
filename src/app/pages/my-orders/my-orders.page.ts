@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusDelivery } from '../../commons/enums/status-delivery.enum';
+import { InfoManagementService } from '../../commons/services/info-management.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -29,11 +30,30 @@ export class MyOrdersPage implements OnInit {
   iconOnWayStatus      : string = StatusDelivery.DELIVERY_ONWAY.toString();
   iconCompleteStatus   : string = StatusDelivery.DELIVERY_COMPLETE.toString();
   iconFailtStatus      : string = StatusDelivery.DELIVERY_FAIL.toString();
-
-
-  constructor() { }
+  
+  constructor(private infoManagementService : InfoManagementService) { }
 
   ngOnInit() {
+
+    this.infoManagementService.statusTitle.subscribe(
+      statusTitle =>  this.titleSecondary = statusTitle
+    );
+
+    this.infoManagementService.countAllStatus.subscribe(
+      countAllStatus => {
+        this.countPendingStatus   = countAllStatus.countPendingStatus;
+        this.countConfirmedStatus = countAllStatus.countConfirmedStatus;
+        this.countCanceledStatus  = countAllStatus.countCanceledStatus;
+        this.countPreparingStatus = countAllStatus.countPreparingStatus;
+        this.countAssignedStatus  = countAllStatus.countAssignedStatus;
+        this.countOnWayStatus     = countAllStatus.countOnWayStatus;
+        this.countCompleteStatus  = countAllStatus.countCompleteStatus;
+        this.countFailtStatus     = countAllStatus.countFailtStatus;
+      }
+    );
+
+    
+
   }
 
 }
