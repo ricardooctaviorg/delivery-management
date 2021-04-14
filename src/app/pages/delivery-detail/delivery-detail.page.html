@@ -1,0 +1,64 @@
+<app-header currentTitle="{{preTitle}}{{ titleDetailType | detailTypeTitle}}"></app-header>
+<ion-list class="my-ion-list" lines="none">
+  <ion-item [ngSwitch]="statusIdCurrent">
+    <ion-label>
+      <ion-icon class="ion-margin-horizontal" slot="start" name="bag" color="success">
+      </ion-icon>
+      {{ deliveryIdCurrent }}
+    </ion-label>
+    <ion-label>
+      <ion-icon class="ion-margin-end" *ngSwitchCase="'d'" slot="start" name="{{statusIdCurrent | statusDeliveryIcon}}"
+        color="success">
+      </ion-icon>
+      <ion-icon class="ion-margin-end" *ngSwitchCase="'e'" slot="start" name="{{statusIdCurrent | statusDeliveryIcon}}"
+        color="success">
+      </ion-icon>
+      <ion-icon class="ion-margin-end" *ngSwitchCase="'f'" slot="start" name="{{statusIdCurrent | statusDeliveryIcon}}"
+        color="success">
+      </ion-icon>
+      <ion-icon class="ion-margin-end" *ngSwitchCase="'f1'" slot="start" name="{{statusIdCurrent | statusDeliveryIcon}}"
+        color="danger">
+      </ion-icon>
+      {{statusIdCurrent | statusDeliveryTitle }}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      <ion-icon class="ion-margin-horizontal" slot="start" name="person" color="success"></ion-icon>
+      {{ nameCustomer }}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <a  href="tel:{{phoneCustomer}}">
+      <ion-label>
+        <ion-icon class="ion-margin-horizontal" slot="start" name="call" color="success"></ion-icon>
+        {{ phoneCustomer | prettyPhone}}
+      </ion-label>
+    </a>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      <ion-icon class="ion-margin-horizontal" slot="start" name="time" color="success"></ion-icon>
+      {{ assignDate | date: 'HH:mm:ss' }}
+    </ion-label>
+    <ion-label>
+      <ion-icon class="ion-margin-end" slot="start" name="stopwatch" color="success"></ion-icon>
+      {{ deliveryDate | date: 'HH:mm:ss' }}
+    </ion-label>
+  </ion-item>
+</ion-list>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar color="light" slot="bottom">
+      <ion-tab-button [tab]="['detailLocation/',deliveryIdCurrent]">
+        <ion-icon name="location"></ion-icon>
+        <ion-label>UBICACIÓN</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['detailItems/',deliveryIdCurrent]">
+        <ion-icon name="bag"></ion-icon>
+        <ion-label>PEDIDO</ion-label>
+        <ion-badge color="success">{{ totalAmount | currency:'MXN' }}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

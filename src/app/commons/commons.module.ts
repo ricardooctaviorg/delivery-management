@@ -5,6 +5,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { StatusDeliveryIcon } from './pipes/status-delivery-icon.pipe';
+import { TypeFailTitlePipe } from './pipes/type-fail-title.pipe';
+import { PrettyPhonePipe } from './pipes/pretty-phone.pipe';
+import { DetailTypeTitlePipe } from './pipes/detail-type-title.pipe';
 
 @NgModule({
   declarations: [ 
@@ -12,6 +15,9 @@ import { StatusDeliveryIcon } from './pipes/status-delivery-icon.pipe';
     , StatusDeliveryTitlePipe
     , HeaderComponent
     , StatusDeliveryIcon
+    , TypeFailTitlePipe
+    , PrettyPhonePipe
+    , DetailTypeTitlePipe
   ],
   imports: [
     CommonModule
@@ -22,6 +28,9 @@ import { StatusDeliveryIcon } from './pipes/status-delivery-icon.pipe';
     , StatusDeliveryTitlePipe
     , HeaderComponent
     , StatusDeliveryIcon
+    , TypeFailTitlePipe
+    , PrettyPhonePipe
+    , DetailTypeTitlePipe
   ]
 })
 

@@ -44,7 +44,7 @@ export class DeliveryListComponent implements OnInit {
   countPendingOrders      : number  = 0;
   countFinalyOrders       : number  = 0;
   showStatusTitle         : string  = "";
-  emptyGroup              : string  = "";
+  emptyList               : string  = "";
 
   today   = new Date();
   dd      = String(this.today.getDate()).padStart(2, '0');;
@@ -87,6 +87,9 @@ export class DeliveryListComponent implements OnInit {
         {
           if (data.success) {
             this.infoManagementService.sendStatusTitle(statusId[0]);
+
+            if(data.count == 0)
+              this.emptyList = statusId[0];
 
             this.pizzaDeliveriesCurrent = data.deliveries as PizzaDelivery[];
             this.pizzaDeliveries.push(... this.pizzaDeliveriesCurrent);
@@ -150,6 +153,7 @@ export class DeliveryListComponent implements OnInit {
       if (dataOfModal.data.success) {
         dataOfModal.data.pizzaDeliveryUpdated.status.statusId       = status;
         dataOfModal.data.pizzaDeliveryUpdated.status.statusDelivery = StatusDelivery[status];
+        dataOfModal.data.pizzaDeliveryUpdated.assignDate            = new Date();
         this.deliveryManagementService.updateDelivery(dataOfModal.data.pizzaDeliveryUpdated).subscribe(
           data => {
             this.utilService.showStatus(status, SUCCESS_TRUE);
@@ -161,8 +165,12 @@ export class DeliveryListComponent implements OnInit {
       }
     } else {
       this.pizzaDelivery = this.storageService.getPizzaDeliveryByDeliveryId(deliveryId);
-      this.pizzaDelivery.status.statusId        = status;
-      this.pizzaDelivery.status.statusDelivery  = StatusDelivery[status];
+      this.pizzaDelivery.status.statusId = status;
+      this.pizzaDelivery.status.statusDelivery = StatusDelivery[status];
+      if (status == StatusDelivery.DELIVERY_CONFIRMED.toString())
+        this.pizzaDelivery.confirmDate = new Date();
+      if (status == StatusDelivery.DELIVERY_PREPARING.toString())
+        this.pizzaDelivery.preparingDate = new Date();
       this.deliveryManagementService.updateDelivery(this.pizzaDelivery).subscribe(
         data => {
           this.utilService.showStatus(status, SUCCESS_TRUE);

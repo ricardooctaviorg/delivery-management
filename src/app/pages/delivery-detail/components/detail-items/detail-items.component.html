@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Total a Pagar:</ion-card-subtitle>
+      <ion-card-title color="tertiary">
+        <span >
+          {{amountCurrent | currency:'MXN'}}
+        </span>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card *ngFor="let a of ordersCurrent">
+    <ion-card-header>
+      <ion-card-title>{{a.order.orderId | uppercase}}</ion-card-title>
+    </ion-card-header>
+    <ion-item lines="none">
+      <ion-label>Cantidad</ion-label>
+      <ion-badge color="tertiary">{{a.volume}}</ion-badge>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Tamaño</ion-label>
+      <ion-badge color="tertiary">{{a.size | titlecase}}</ion-badge>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Precio Unitario</ion-label>
+      <ion-badge color="tertiary">{{a.amount | currency:'MXN'}}</ion-badge>
+    </ion-item>
+  </ion-card>
+</ion-content>

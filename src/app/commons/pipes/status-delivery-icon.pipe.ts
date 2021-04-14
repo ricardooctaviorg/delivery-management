@@ -10,28 +10,28 @@ export class StatusDeliveryIcon implements PipeTransform {
     let response: string;
     switch(value){
       case StatusDelivery.DELIVERY_PENDING.toString():
-        response = 'storefront-outline';
+        response = 'storefront';
       break;
       case StatusDelivery.DELIVERY_CANCELED.toString():
-        response = 'alert-circle-outline';
+        response = 'alert-circle';
       break;
       case StatusDelivery.DELIVERY_CONFIRMED.toString():
-        response = 'thumbs-up-outline';
+        response = 'thumbs-up';
       break;
       case StatusDelivery.DELIVERY_PREPARING.toString():
-        response = 'bonfire-outline';
+        response = 'bonfire';
       break;
       case StatusDelivery.DELIVERY_ASSIGNED.toString():
-        response = 'bag-add-outline';
+        response = 'bag-add';
       break;
       case StatusDelivery.DELIVERY_ONWAY.toString():
-        response = 'rocket-outline';
+        response = 'rocket';
       break;
       case StatusDelivery.DELIVERY_COMPLETE.toString():
-        response = 'bag-check-outline';
+        response = 'bag-check';
       break;
       case StatusDelivery.DELIVERY_FAIL.toString():
-        response = 'thumbs-down-outline';
+        response = 'thumbs-down';
       break;
 
     }
