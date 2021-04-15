@@ -8,6 +8,7 @@ import { StatusDeliveryIcon } from './pipes/status-delivery-icon.pipe';
 import { TypeFailTitlePipe } from './pipes/type-fail-title.pipe';
 import { PrettyPhonePipe } from './pipes/pretty-phone.pipe';
 import { DetailTypeTitlePipe } from './pipes/detail-type-title.pipe';
+import { StatusDeliveryLabelPipe } from './pipes/status-delivery-label.pipe';
 
 @NgModule({
   declarations: [ 
@@ -18,6 +19,7 @@ import { DetailTypeTitlePipe } from './pipes/detail-type-title.pipe';
     , TypeFailTitlePipe
     , PrettyPhonePipe
     , DetailTypeTitlePipe
+    , StatusDeliveryLabelPipe
   ],
   imports: [
     CommonModule
@@ -31,6 +33,7 @@ import { DetailTypeTitlePipe } from './pipes/detail-type-title.pipe';
     , TypeFailTitlePipe
     , PrettyPhonePipe
     , DetailTypeTitlePipe
+    , StatusDeliveryLabelPipe
   ]
 })
 

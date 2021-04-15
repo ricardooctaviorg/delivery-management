@@ -1,35 +1,39 @@
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Ubicación de Entrega</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-icon name="pin" slot="start"></ion-icon>
-      {{addressCurrent.street | titlecase}}
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Referencias</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-icon name="information-circle" slot="start"></ion-icon>
-      {{addressCurrent.references | titlecase}}
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Entre Calles</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-icon name="trail-sign" slot="start"></ion-icon>
-      {{addressCurrent.betweenStreets | titlecase}}
-    </ion-card-content>
-  </ion-card>
-  <ion-content class="ion-padding">
-    <ion-button color="tertiary" (click)="onClick()" expand="block" size="large">
-      <ion-icon  slot="start" name="location"></ion-icon>
-      <span>ABRIR UBICACIÓN</span>
-    </ion-button>
-  </ion-content>
+  <ion-grid fixed>
+    <ion-row size="12" class="ion-justify-content-center ion-align-items-end">
+      <ion-col size="4" size-md class="ion-align-self-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Ubicación de Entrega</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            {{addressCurrent.street | titlecase}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" size-md class="ion-align-self-center"> 
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Referencias</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="information-circle" slot="start"></ion-icon>
+            {{addressCurrent.references | titlecase}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" size-md class="ion-align-self-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Entre Calles</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="trail-sign" slot="start"></ion-icon>
+            {{addressCurrent.betweenStreets | titlecase}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

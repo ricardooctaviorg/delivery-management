@@ -1,0 +1,178 @@
+
+  <ion-grid class="">
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col  size="12">
+        <ion-item lines="none">
+          <ion-icon class="ion-margin-horizontal" slot="start" name="bag" color="success"></ion-icon>
+          <ion-text color="success" class="ion-text-wrap ion-text-start">
+            <h1>
+              <strong color="success"> {{dataOfStatusBar.deliveryIdCurrent | uppercase}} </strong>
+            </h1>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-icon class="ion-margin-horizontal" slot="start" name="person" color="success"></ion-icon>
+          <ion-label>
+            <ion-text color="success" class="ion-text-wrap ion-text-start">
+              <h1>
+                <strong color="success"> {{dataOfStatusBar.customerName | uppercase}} </strong>
+              </h1>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-icon class="ion-margin-horizontal" slot="start" name="call" color="success"></ion-icon>
+          <a href="tel:{{dataOfStatusBar.customerPhone}}">
+            <ion-label>
+              <ion-text color="success" class="ion-text-wrap ion-text-start">
+                <h1>
+                  <strong color="success">{{ dataOfStatusBar.customerPhone | prettyPhone}}</strong>
+                </h1>
+              </ion-text>
+            </ion-label>
+          </a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="">
+      <ion-col size="2">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="{{ iconPendingStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[0]}}"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.orderDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item [ngSwitch]="dataOfStatusBar.currentStatus" lines="none">
+          <ion-icon *ngSwitchDefault slot="start" name="{{ iconConfirmedStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[1]}}"></ion-icon>
+          <ion-icon *ngSwitchCase="'a1'" slot="start" name="{{ iconCanceledStatus | statusDeliveryIcon}}"  color="danger"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.confirmDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="{{ iconPreparingStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[2]}}"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.preparingDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="{{ iconAssignedStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[3]}}"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.assignDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="{{ iconOnWayStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[4]}}"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.onWayDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item [ngSwitch]="dataOfStatusBar.currentStatus" lines="none">
+          <ion-icon *ngSwitchDefault slot="start" name="{{ iconCompleteStatus | statusDeliveryIcon}}" color="{{arrayStatusColors[5]}}"></ion-icon>
+          <ion-icon *ngSwitchCase="'f1'" slot="start" name="{{ iconCanceledStatus | statusDeliveryIcon}}"  color="danger"></ion-icon>
+          <ion-label>
+            <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+              <strong>
+                <span>{{ dataOfStatusBar.deliveryDate | date: 'HH:mm'}}</span>
+              </strong>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-progress-bar color="{{colorOfStatusBar}}" value="{{statusBarValue}}" buffer="{{statusBarValueBuffer}}"></ion-progress-bar>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[0] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[1] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[2] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[3] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[4] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <ion-text color="{{colorOfStatusBar}}" class="ion-text-wrap ion-text-start">
+            <strong>
+              <span>{{arrayOfStatus[5] | statusDeliveryLabel }}</span>
+            </strong>
+          </ion-text>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
