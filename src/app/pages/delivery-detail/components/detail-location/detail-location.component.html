@@ -1,36 +1,41 @@
 <ion-content>
   <ion-grid fixed>
     <ion-row size="12" class="ion-justify-content-center ion-align-items-end">
-      <ion-col size="4" size-md class="ion-align-self-center">
+      <ion-col size="6" size-md class="ion-align-self-center"> 
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Ubicación de Entrega</ion-card-title>
+            <ion-card-subtitle>Referencias</ion-card-subtitle>
+            <ion-card-title> {{addressCurrent.references | lowercase }} </ion-card-title>
           </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="pin" slot="start"></ion-icon>
-            {{addressCurrent.street | titlecase}}
-          </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col size="4" size-md class="ion-align-self-center"> 
+      <ion-col size="6" size-md class="ion-align-self-center">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Referencias</ion-card-title>
+            <ion-card-subtitle>Entre Calles</ion-card-subtitle>
+            <ion-card-title>{{addressCurrent.betweenStreets | lowercase }}</ion-card-title>
           </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="information-circle" slot="start"></ion-icon>
-            {{addressCurrent.references | titlecase}}
-          </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col size="4" size-md class="ion-align-self-center">
+    </ion-row>
+    <ion-row size="12" class="ion-justify-content-center ion-align-items-end">
+      <ion-col size="12" size-md class="ion-align-self-center">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Entre Calles</ion-card-title>
+            <ion-card-subtitle>Ubicación de Entrega</ion-card-subtitle>
+            <ion-card-title>{{addressCurrent.street | titlecase}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-icon name="trail-sign" slot="start"></ion-icon>
-            {{addressCurrent.betweenStreets | titlecase}}
+            <google-map
+            height="400px"
+            width="100%"
+            [options]="optionsMap"
+            [center]="center" 
+            [zoom]="zoom">
+              <map-marker #marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                [options]="markerOptions" (mapClick)="openInfoWindow(marker)"></map-marker>
+              <map-info-window>Info Window content</map-info-window>
+            </google-map>
           </ion-card-content>
         </ion-card>
       </ion-col>

@@ -1,45 +1,5 @@
 
   <ion-grid class="">
-    <ion-row class="ion-justify-content-center ion-align-items-center">
-      <ion-col  size="12">
-        <ion-item lines="none">
-          <ion-icon class="ion-margin-horizontal" slot="start" name="bag" color="success"></ion-icon>
-          <ion-text color="success" class="ion-text-wrap ion-text-start">
-            <h1>
-              <strong color="success"> {{dataOfStatusBar.deliveryIdCurrent | uppercase}} </strong>
-            </h1>
-          </ion-text>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center ion-align-items-center">
-      <ion-col size="6">
-        <ion-item lines="none">
-          <ion-icon class="ion-margin-horizontal" slot="start" name="person" color="success"></ion-icon>
-          <ion-label>
-            <ion-text color="success" class="ion-text-wrap ion-text-start">
-              <h1>
-                <strong color="success"> {{dataOfStatusBar.customerName | uppercase}} </strong>
-              </h1>
-            </ion-text>
-          </ion-label>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item lines="none">
-          <ion-icon class="ion-margin-horizontal" slot="start" name="call" color="success"></ion-icon>
-          <a href="tel:{{dataOfStatusBar.customerPhone}}">
-            <ion-label>
-              <ion-text color="success" class="ion-text-wrap ion-text-start">
-                <h1>
-                  <strong color="success">{{ dataOfStatusBar.customerPhone | prettyPhone}}</strong>
-                </h1>
-              </ion-text>
-            </ion-label>
-          </a>
-        </ion-item>
-      </ion-col>
-    </ion-row>
     <ion-row class="">
       <ion-col size="2">
         <ion-item lines="none">

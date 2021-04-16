@@ -11,6 +11,7 @@ import { CommonsModule } from '../../commons/commons.module';
 import { DetailItemsComponent } from './components/detail-items/detail-items.component';
 import { DetailLocationComponent } from './components/detail-location/detail-location.component';
 import { ProgressBarDeliveryComponent } from './components/progress-bar-delivery/progress-bar-delivery.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ProgressBarDeliveryComponent } from './components/progress-bar-delivery
     , IonicModule
     , DeliveryDetailPageRoutingModule
     , CommonsModule
+    , GoogleMapsModule
   ],
   declarations: [DeliveryDetailPage
   , DetailItemsComponent
