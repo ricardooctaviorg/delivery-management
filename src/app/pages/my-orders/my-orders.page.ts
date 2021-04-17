@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StatusDelivery } from '../../commons/enums/status-delivery.enum';
 import { InfoManagementService } from '../../commons/services/info-management.service';
 
@@ -31,7 +32,8 @@ export class MyOrdersPage implements OnInit {
   iconCompleteStatus   : string = StatusDelivery.DELIVERY_COMPLETE.toString();
   iconFailtStatus      : string = StatusDelivery.DELIVERY_FAIL.toString();
   
-  constructor(private infoManagementService : InfoManagementService) { }
+  constructor(private infoManagementService : InfoManagementService
+            , private router                : Router) { }
 
   ngOnInit() {
 
@@ -52,7 +54,7 @@ export class MyOrdersPage implements OnInit {
       }
     );
 
-    
+    this.router.navigate(['my-orders','deliveryList','a']);
 
   }
 
