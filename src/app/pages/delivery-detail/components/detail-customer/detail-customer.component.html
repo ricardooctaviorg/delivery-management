@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size="5" class="ion-align-self-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title>
+              <ion-label>
+                <ion-text color="success" class="ion-text-wrap ion-text-start">
+                  <h1>
+                    <strong color="success"> {{ pizzaDelivery.deliveryId | uppercase }} </strong>
+                  </h1>
+                </ion-text>
+              </ion-label>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Nombre: </ion-card-subtitle>
+            <ion-card-title>
+              <ion-label>
+                <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+                  <h4>
+                    <strong color="tertiary"> {{ pizzaDelivery.customer.name | uppercase }} </strong>
+                  </h4>
+                </ion-text>
+              </ion-label>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Telefono: </ion-card-subtitle>
+            <ion-card-title>
+              <a href="tel:{{pizzaDelivery.customer.phone}}">
+                <ion-label>
+                  <ion-text color="tertiary" class="ion-text-wrap ion-text-start">
+                    <h4>
+                      <strong color="tertiary">{{ pizzaDelivery.customer.phone | prettyPhone }}</strong>
+                    </h4>
+                  </ion-text>
+                </ion-label>
+              </a>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="7" class="ion-align-self-center">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

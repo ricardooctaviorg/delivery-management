@@ -12,6 +12,7 @@ import { DetailItemsComponent } from './components/detail-items/detail-items.com
 import { DetailLocationComponent } from './components/detail-location/detail-location.component';
 import { ProgressBarDeliveryComponent } from './components/progress-bar-delivery/progress-bar-delivery.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { DetailCustomerComponent } from './components/detail-customer/detail-customer.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   declarations: [DeliveryDetailPage
   , DetailItemsComponent
   , DetailLocationComponent
-  , ProgressBarDeliveryComponent ]
+  , ProgressBarDeliveryComponent
+  , DetailCustomerComponent ]
 })
 export class DeliveryDetailPageModule {}

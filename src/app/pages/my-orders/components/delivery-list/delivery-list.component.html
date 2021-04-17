@@ -64,7 +64,7 @@
     <div *ngSwitchDefault>
       <ion-item-sliding *ngFor="let a of pizzaDeliveries" [ngSwitch]="a.status.statusId">
         <ion-item [ngSwitch]="a.status.statusId"
-        [routerLink]="['/delivery-detail', a.deliveryId, a.status.statusId, a.customer.name, a.customer.phone, a.orderDate, a.confirmDate, a.preparingDate, a.assignDate, a.onWayDate, a.deliveryDate, a.totalAmount ]">
+        [routerLink]="['/delivery-detail', a.deliveryId ]">
           <ion-icon *ngSwitchCase="'a'" slot="start" name="{{ iconPendingStatus | statusDeliveryIcon}}" color="success">
           </ion-icon>
           <ion-icon *ngSwitchCase="'b'" slot="start" name="{{ iconConfirmedStatus | statusDeliveryIcon}}"

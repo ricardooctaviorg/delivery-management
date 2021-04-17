@@ -1,13 +1,17 @@
 <app-header currentTitle="{{preTitle}}{{ titleDetailType | detailTypeTitle}}"></app-header>
-<app-progress-bar-delivery [dataOfStatusBar]="dataOfStatusBar"></app-progress-bar-delivery>
+<app-progress-bar-delivery [dataOfStatusBar]="delivery"></app-progress-bar-delivery>
 <ion-content>
   <ion-tabs>
     <ion-tab-bar color="light" slot="bottom">
-      <ion-tab-button [tab]="['detailLocation/',deliveryIdCurrent]">
+      <ion-tab-button [tab]="['detailCustomer/',delivery.deliveryId]">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>INFORMACIÓN</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [tab]="['detailLocation/',delivery.deliveryId]">
         <ion-icon name="location"></ion-icon>
         <ion-label>UBICACIÓN</ion-label>
       </ion-tab-button>
-      <ion-tab-button [tab]="['detailItems/',deliveryIdCurrent]">
+      <ion-tab-button [tab]="['detailItems/',delivery.deliveryId]">
         <ion-icon name="bag"></ion-icon>
         <ion-label>PEDIDO</ion-label>
         <ion-badge color="success">{{ totalAmount | currency:'MXN' }}</ion-badge>

@@ -7,7 +7,7 @@ import { InfoManagementService } from '../../../../commons/services/info-managem
 import {MapInfoWindow, MapMarker} from '@angular/google-maps';
 import { environment } from '../../../../../environments/environment.local';
 
-const DELIVERY_LOCATION   = "location";
+const CURRENT_TITLE       = "location";
 const MAPID_LIGTH         = environment.MapIdLigth;
 const MAPID_DARK          = environment.MapIdDark;
 const MAP_ZOOM            = 18;
@@ -56,7 +56,7 @@ export class DetailLocationComponent implements OnInit {
         this.toLat = this.addressCurrent.lat;
         this.toLng = this.addressCurrent.lng;
         this.destination = this.toLat + ',' + this.toLng;
-        this.infoManagementService.sendDetailTypeTltle(DELIVERY_LOCATION);
+        this.infoManagementService.sendDetailTypeTltle(CURRENT_TITLE);
         this.center           = {lat: Number(this.toLat), lng: Number(this.toLng)};
         this.markerPositions.push(this.center);
       }

@@ -4,7 +4,7 @@ import { StorageService } from '../../../../commons/services/storage.service';
 import { PizzaDelivery } from '../../../../commons/interfaces/pizza-delivery';
 import { InfoManagementService } from '../../../../commons/services/info-management.service';
 
-const DELIVERY_INFO   = "delivery";
+const CURRENT_TITLE   = "order";
 
 @Component({
   selector: 'app-detail-items',
@@ -32,7 +32,7 @@ export class DetailItemsComponent implements OnInit {
             this.ordersCurrent = a.orders;
             this.amountCurrent = a.totalAmount;
           }
-          this.infoManagementService.sendDetailTypeTltle(DELIVERY_INFO);
+          this.infoManagementService.sendDetailTypeTltle(CURRENT_TITLE);
       }
     );
 

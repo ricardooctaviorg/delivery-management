@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StatusDelivery } from '../../../../commons/enums/status-delivery.enum';
 import { StatusDeliverySuccess } from '../../../../commons/enums/status-delivery-success.enum';
 import { StatusDeliveryFailed } from '../../../../commons/enums/status-delivery-failed.enum';
+import { PizzaDelivery } from '../../../../commons/interfaces/pizza-delivery';
 
 const VALUE_OF_INCREMENTS   = 0.16666666
 const COLOR_COMPLETE        = "success";
@@ -17,7 +18,7 @@ const COLOR_DISABLED_STATUS = "medium";
 })
 export class ProgressBarDeliveryComponent implements OnInit {
 
-  @Input() dataOfStatusBar: any;
+  @Input() dataOfStatusBar: PizzaDelivery;
 
   statusBarValue          : string;
   statusBarValueBuffer    : string;
@@ -39,11 +40,11 @@ export class ProgressBarDeliveryComponent implements OnInit {
 
   ngOnInit() {
     
-    this.colorOfStatusBar     = this.getColorStatusBar(this.dataOfStatusBar.currentStatus)
-    this.statusBarValueBuffer = this.getStatusBarValue(this.dataOfStatusBar.currentStatus);
+    this.colorOfStatusBar     = this.getColorStatusBar(this.dataOfStatusBar.status.statusId)
+    this.statusBarValueBuffer = this.getStatusBarValue(this.dataOfStatusBar.status.statusId);
     this.statusBarValue       = this.statusBarValueBuffer;
-    this.arrayStatusColors    = this.getArrayOfColors(this.dataOfStatusBar.currentStatus);
-    this.arrayOfStatus        = this.populateLabelStatus(this.dataOfStatusBar.currentStatus);
+    this.arrayStatusColors    = this.getArrayOfColors(this.dataOfStatusBar.status.statusId);
+    this.arrayOfStatus        = this.populateLabelStatus(this.dataOfStatusBar.status.statusId);
   }
 
   populateLabelStatus(currentStatus: string):string[]{

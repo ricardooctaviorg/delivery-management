@@ -1,5 +1,7 @@
 export enum TypeDetailStatus {
-    DELIVERY_LOCATION       = <any> "location"
-    , DELIVERY_INFO         = <any> "delivery"
+    DELIVERY_INFO         = <any> "info"
+    , DELIVERY_LOCATION       = <any> "location"
+    , DELIVERY_ORDER         = <any> "order"
+    
 }
 

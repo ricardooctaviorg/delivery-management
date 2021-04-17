@@ -1,11 +1,19 @@
 <ion-content>
   <ion-grid fixed>
-    <ion-row size="12" class="ion-justify-content-center ion-align-items-end">
-      <ion-col size="6" size-md class="ion-align-self-center"> 
+    <ion-row size="12" class="ion-justify-content-center ion-align-items-center">
+      <ion-col size="6" size-md class="ion-align-self-center">
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Referencias</ion-card-subtitle>
-            <ion-card-title> {{addressCurrent.references | lowercase }} </ion-card-title>
+            <ion-card-title>
+              <ion-label>
+                <ion-text color="" class="ion-text-wrap ion-text-start">
+                  <h2>
+                    <strong color=""> {{addressCurrent.references | titlecase }} </strong>
+                  </h2>
+                </ion-text>
+              </ion-label>
+            </ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -13,12 +21,20 @@
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Entre Calles</ion-card-subtitle>
-            <ion-card-title>{{addressCurrent.betweenStreets | lowercase }}</ion-card-title>
+            <ion-card-title>
+              <ion-label>
+                <ion-text color="" class="ion-text-wrap ion-text-start">
+                  <h2>
+                    <strong color=""> {{addressCurrent.betweenStreets | titlecase }} </strong>
+                  </h2>
+                </ion-text>
+              </ion-label>
+            </ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row size="12" class="ion-justify-content-center ion-align-items-end">
+    <ion-row size="12" class="ion-justify-content-center ion-align-items-center">
       <ion-col size="12" size-md class="ion-align-self-center">
         <ion-card>
           <ion-card-header>
@@ -26,12 +42,7 @@
             <ion-card-title>{{addressCurrent.street | titlecase}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <google-map
-            height="400px"
-            width="100%"
-            [options]="optionsMap"
-            [center]="center" 
-            [zoom]="zoom">
+            <google-map height="400px" width="100%" [options]="optionsMap" [center]="center" [zoom]="zoom">
               <map-marker #marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
                 [options]="markerOptions" (mapClick)="openInfoWindow(marker)"></map-marker>
               <map-info-window>Info Window content</map-info-window>

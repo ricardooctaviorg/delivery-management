@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DeliveryDetailPage } from './delivery-detail.page';
 import { DetailLocationComponent } from './components/detail-location/detail-location.component';
 import { DetailItemsComponent } from './components/detail-items/detail-items.component';
+import { DetailCustomerComponent } from './components/detail-customer/detail-customer.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
      {
       path: 'detailItems/:deliveryId'
       , component:DetailItemsComponent
-     } 
+     }, 
+     {
+      path: 'detailCustomer/:deliveryId'
+      , component:DetailCustomerComponent
+     }  
     ]
   }
 ];

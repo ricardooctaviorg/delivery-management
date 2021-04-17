@@ -12,8 +12,11 @@ export class DetailTypeTitlePipe implements PipeTransform {
       case TypeDetailStatus.DELIVERY_LOCATION:
         response = ' UBICACIÓN ';
       break;
-      case TypeDetailStatus.DELIVERY_INFO:
+      case TypeDetailStatus.DELIVERY_ORDER:
         response = ' PEDIDO ';
+      break;
+      case TypeDetailStatus.DELIVERY_INFO:
+        response = ' INFORMACIÓN ';
       break;
 
     }

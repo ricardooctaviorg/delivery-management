@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/modal-select-agent/modal-select-agent.module').then( m => m.ModalSelectAgentPageModule)
   },
   {
-    path: 'delivery-detail/:deliveryId/:statusId/:nameCustomer/:phoneCustomer/:orderDate/:confirmDate/:preparingDate/:assignDate/:onWayDate/:deliveryDate/:totalAmount',
+    path: 'delivery-detail/:deliveryId',
     loadChildren: () => import('./pages/delivery-detail/delivery-detail.module').then( m => m.DeliveryDetailPageModule)
   },
 ];
