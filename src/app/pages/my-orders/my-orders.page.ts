@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusDelivery } from '../../commons/enums/status-delivery.enum';
 import { InfoManagementService } from '../../commons/services/info-management.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-orders',
@@ -33,9 +34,12 @@ export class MyOrdersPage implements OnInit {
   iconFailtStatus      : string = StatusDelivery.DELIVERY_FAIL.toString();
   
   constructor(private infoManagementService : InfoManagementService
-            , private router                : Router) { }
+            , private router                : Router
+            , private menuController        : MenuController) { }
 
   ngOnInit() {
+
+    this.eneableMenu();
 
     this.infoManagementService.statusTitle.subscribe(
       statusTitle =>  this.titleSecondary = statusTitle
@@ -56,6 +60,11 @@ export class MyOrdersPage implements OnInit {
 
     this.router.navigate(['my-orders','deliveryList','a']);
 
+  }
+
+  eneableMenu()
+  {
+    this.menuController.enable(true);
   }
 
 }

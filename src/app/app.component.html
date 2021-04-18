@@ -1,3 +1,31 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="firstMunu" contentId="main">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-avatar class="ion-margin-end" slot="end">
+          <img [src]="managementInfoCurrent.avatar">
+        </ion-avatar>
+        <ion-title class="ion-text-end" size="small">
+          <h6>{{managementInfoCurrent.name | uppercase }}</h6>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle *ngFor="let a of menuOpts | async" [routerLink]="a.redirectTo">
+          <ion-item>
+            <ion-icon slot="start" [name]="a.icon" color="tertiary"></ion-icon>
+            <ion-label>{{a.name}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item button (click)="logOut()">
+            <ion-icon slot="start" name="exit" color="tertiary"></ion-icon>
+            <ion-label>Salir</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

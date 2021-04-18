@@ -15,7 +15,7 @@ export class InfoManagementService {
   countAllStatusAny     : any;
   statusTitleString     : string = "";
 
-  @Output() change              : EventEmitter<any> = new EventEmitter();
+  @Output() managementInfoMenu  : EventEmitter<any> = new EventEmitter();
   @Output() detailTypeTitle     : EventEmitter<any> = new EventEmitter();
 
   @Output() countAllStatus      : EventEmitter<any> = new EventEmitter();
@@ -25,7 +25,7 @@ export class InfoManagementService {
 
   sendManagementInfo(managementInfo: any) {
     this.managementInfo = managementInfo;
-    this.change.emit(this.managementInfo);
+    this.managementInfoMenu.emit(this.managementInfo);
   }
 
   sendDetailTypeTltle(title: string) {

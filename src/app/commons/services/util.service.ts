@@ -42,7 +42,7 @@ export class UtilService {
 
   public getAvatarCatalog(): Observable<any> {
     const params = new HttpParams()
-      .set('avatarType', 'agent')
+      .set('avatarType', 'management')
 
     const httpOptionsX =
     {
@@ -55,7 +55,7 @@ export class UtilService {
     return this.httpClient.get<any>(`${GETTYPEFAILS}`);
   }
 
-  async showAgentRegisterStatus(notice: string, success: boolean) {
+  async showManagementRegisterStatus(notice: string, success: boolean) {
 
     var typeAlert       : string = TOAST_COLOR_SUCCESS_FALSE;
     var iconToast       : string = TOAST_ICON_SUCCESS_FALSE;
@@ -89,7 +89,7 @@ export class UtilService {
     toast.present();
   }
 
-  async showAgentUpdateStatus(notice: string, success: boolean) {
+  async showManagementUpdateStatus(notice: string, success: boolean) {
     
     var typeAlert       : string = TOAST_COLOR_SUCCESS_FALSE;
     var iconToast       : string = TOAST_ICON_SUCCESS_FALSE;
