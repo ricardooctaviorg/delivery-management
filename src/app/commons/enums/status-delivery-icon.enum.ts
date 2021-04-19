@@ -1,11 +1,11 @@
 export enum StatusDeliveryIcon {
-    DELIVERY_PENDING        = <any> "storefront-outline"
-    , DELIVERY_CANCELED     = <any> "thumbs-down-outline"
-    , DELIVERY_CONFIRMED    = <any> "thumbs-up-outline"
-    , DELIVERY_PREPARING    = <any> "bonfire-outline"
-    , DELIVERY_ASSIGNED     = <any> "bag-add-outline"
-    , DELIVERY_ONWAY        = <any> "rocket-outline"
-    , DELIVERY_COMPLETE     = <any> "bag-check-outline"
-    , DELIVERY_FAIL         = <any> "alert-circle-outline"
+    DELIVERY_PENDING        = <any> "storefront"
+    , DELIVERY_CANCELED     = <any> "thumbs-down"
+    , DELIVERY_CONFIRMED    = <any> "thumbs-up"
+    , DELIVERY_PREPARING    = <any> "bonfire"
+    , DELIVERY_ASSIGNED     = <any> "bag-add"
+    , DELIVERY_ONWAY        = <any> "rocket"
+    , DELIVERY_COMPLETE     = <any> "bag-check"
+    , DELIVERY_FAIL         = <any> "alert-circle"
 }
 

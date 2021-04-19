@@ -40,8 +40,7 @@ export class DeliveryManagementService {
     , sort: string): Observable<any> {
 
     const headers = new HttpHeaders()
-      //.set('x-token', this.storageService.getToken());
-      .set('x-token', '12345');
+      .set('x-token', this.storageService.getToken());
     const params = new HttpParams()
       .set('statusId', statusId.toString())
       .set('startDate', startDate.toISOString())
@@ -61,8 +60,7 @@ export class DeliveryManagementService {
   public updateDelivery(delivery: PizzaDelivery): Observable<any> {
 
     const headers = new HttpHeaders()
-      //.set('x-token', this.storageService.getToken());
-      .set('x-token', '12345');
+      .set('x-token', this.storageService.getToken());
     const httpOptionsX =
     {
       headers
@@ -75,8 +73,7 @@ export class DeliveryManagementService {
     , endDate: Date): Observable<any> {
 
     const headers = new HttpHeaders()
-      //.set('x-token', this.storageService.getToken());
-      .set('x-token', '12345');
+      .set('x-token', this.storageService.getToken());
     const params = new HttpParams()
       .set('startDate', startDate.toISOString())
       .set('endDate', endDate.toISOString());

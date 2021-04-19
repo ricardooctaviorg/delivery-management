@@ -7,22 +7,23 @@ import { UtilService } from '../../commons/services/util.service';
 import { StorageService } from '../../commons/services/storage.service';
 import { NgForm } from '@angular/forms';
 
-const AVATAR_DEFAULT                    = "https://www.gravatar.com/userimage/198148610/b33d524a0f57ca40fcbaaf29543baffc?size=120";
+const AVATAR_DEFAULT                          = "https://www.gravatar.com/userimage/198148610/b33d524a0f57ca40fcbaaf29543baffc?size=120";
 
-const MANAGEMENT_REGISTER_SUCCESS            = "¡ Registro correcto !";
-const MANAGEMENT_REGISTER_FAIL               = "No se pudo registrar";
-const MANAGEMENT_REGISTER_REQUIRED           = "Favor de completar los datos solicitados";
-const MANAGEMENT_REGISTER_SAMEPASS           = "Las contraseñas deben coincidir";
-const MANAGEMENT_REGISTER_AGENTIDEXIST       = "Ya existe el nombre de usuaio";
-const MANAGEMENT_REGISTER_REQUIRED_AVATAR    = "Favor de Seleccionar un avatar";
+const MANAGEMENT_REGISTER_SUCCESS             = "¡ Registro correcto !";
+const MANAGEMENT_REGISTER_FAIL                = "No se pudo registrar";
+const MANAGEMENT_REGISTER_REQUIRED            = "Favor de completar los datos solicitados";
+const MANAGEMENT_REGISTER_SAMEPASS            = "Las contraseñas deben coincidir";
+const MANAGEMENT_REGISTER_AGENTIDEXIST        = "Ya existe el nombre de usuaio";
+const MANAGEMENT_REGISTER_REQUIRED_AVATAR     = "Favor de Seleccionar un avatar";
+const MANAGEMENT_INVALID                      = "Usuario invalido";
 
-const LOGIN_ERROR                       = "Usuario o contraseña invalidos";
-const ROLE_MANAGEMENT                   = "management"
+const LOGIN_ERROR                             = "Usuario o contraseña invalidos";
+const ROLE_MANAGEMENT                         = "management"
 
-const DARK_THEME                        = "dark";
+const DARK_THEME                              = "dark";
 
-const SUCCESS_TRUE                      = true;
-const SUCCESS_FALSE                     = false;
+const SUCCESS_TRUE                            = true;
+const SUCCESS_FALSE                           = false;
 
 @Component({
   selector: 'app-login',
@@ -87,13 +88,19 @@ export class LoginPage implements OnInit, AfterViewInit {
     if (formLogin.invalid)
       this.utilService.showManagementRegisterStatus(MANAGEMENT_REGISTER_REQUIRED, SUCCESS_FALSE);
 
-    const exist = await this.securityService.login(this.loginManagementDelivery.userId, this.loginManagementDelivery.password);
-    if(exist)
-      this.navController.navigateRoot('my-orders', {
-        animated:true
-      });
-    else
-      this.utilService.showManagementRegisterStatus(LOGIN_ERROR, SUCCESS_FALSE);
+    const existUser = await this.securityService.existUserByRole(ROLE_MANAGEMENT, this.loginManagementDelivery.userId);
+    if (existUser) {
+      const exist = await this.securityService.login(this.loginManagementDelivery.userId, this.loginManagementDelivery.password);
+      if(exist)
+        this.navController.navigateRoot('my-orders', {
+          animated:true
+        });
+      else
+        this.utilService.showManagementRegisterStatus(LOGIN_ERROR, SUCCESS_FALSE);
+    }else
+      this.utilService.showManagementRegisterStatus(MANAGEMENT_INVALID, SUCCESS_FALSE);
+
+
 
   }
 

@@ -6,20 +6,23 @@ import { environment } from '../../../environments/environment.prod';
 import { StatusDelivery } from '../enums/status-delivery.enum';
 import { ToastController } from '@ionic/angular';
 import { StatusDeliveryIcon } from '../enums/status-delivery-icon.enum';
+import { CommonDeliveryIcon } from '../enums/common-delivery-icon.enum';
 
 const PATH_MAINMENU_OPTIONS       = "/assets/json/mainMenu.json";
+
+const TOAST_ICON_SUCCESS_TRUE     = CommonDeliveryIcon.SUCCESS_TRUE.toString();
+const TOAST_ICON_SUCCESS_FALSE    = CommonDeliveryIcon.SUCCESS_FASE.toString();
+
 const TOAST_DURATION              = 5000;
 const TOAST_TRANSLUCENT           = false;
 const TOAST_POSITION              = "bottom";
 const TOAST_COLOR_SUCCESS_TRUE    = "tertiary";
 const TOAST_COLOR_SUCCESS_FALSE   = "danger";
 const TOAST_KEYBOARD_CLOSE        = false;
-const TOAST_ICON_SUCCESS_TRUE     = "happy";
-const TOAST_ICON_SUCCESS_FALSE    = "alert";
 
-const GATEWAY_VALUE         = environment.gateway;
-const AVATAR_RESOURCE       = environment.avatarResource;
-const TYPEFAIL_RESOURCE     = environment.typeFailResource;
+const GATEWAY_VALUE               = environment.gateway;
+const AVATAR_RESOURCE             = environment.avatarResource;
+const TYPEFAIL_RESOURCE           = environment.typeFailResource;
 
 const GETAVATARS = GATEWAY_VALUE
   + AVATAR_RESOURCE

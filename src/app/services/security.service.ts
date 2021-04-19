@@ -31,6 +31,10 @@ const GETUSERSBYROLE = GATEWAY_VALUE
   + SECURITY_RESOURCE
   + '/getUsersByRole';
 
+const EXISTUSERBYROLE = GATEWAY_VALUE
+  + SECURITY_RESOURCE
+  + '/existUserbyRole';
+
 const headers = new HttpHeaders()
   .set('Contet-Type', 'application/json');
 
@@ -186,6 +190,29 @@ export class SecurityService {
       params
     };
     return this.httpClient.get<any>(`${GETUSERSBYROLE}`, httpOptionsX);
+  }
+
+  public existUserByRole(role: string, userId: string): Promise<boolean> {
+    const params = new HttpParams()
+      .set('role', role)
+      .set('userId', userId);
+    const httpOptionsX =
+    {
+      params
+    };
+
+    return new Promise<boolean>(
+      resolve => {
+        this.httpClient.get<any>(`${EXISTUSERBYROLE}`, httpOptionsX).subscribe(
+          data => {
+            if (data.length == 0)
+              resolve(false);
+            else
+              resolve(true);
+          }
+        );
+      }
+    );
   }
 
   logOut() {
