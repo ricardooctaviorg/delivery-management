@@ -2,7 +2,7 @@
     {
         "name": "Mis ordenes",
         "icon": "bag",
-        "redirectTo": "/myDelivery/deliveryList/d,e"
+        "redirectTo": "/my-orders/deliveryList/a"
     },
     {
         "name": "Mi Configuración",

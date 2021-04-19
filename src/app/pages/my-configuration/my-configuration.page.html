@@ -1,0 +1,54 @@
+<app-header-menu titleMain="MI CONFIGURACIÓN"></app-header-menu>
+<ion-content>
+  <ion-list>
+    <!-- <ion-item>
+      <ion-icon slot="start" name="logo-android"></ion-icon>
+      <ion-label>Modo Obscuro Android</ion-label>
+      <ion-toggle disabled slot="end" [(ngModel)]="darkModeSystem"></ion-toggle>
+    </ion-item> -->
+    <ion-item>
+      <ion-icon color="tertiary" slot="start" name="moon"></ion-icon>
+      <ion-label>Modo Obscuro </ion-label>
+      <ion-toggle color="tertiary" id="themeToggle" slot="end" [(ngModel)]="darkMode" (ionChange)="switch()"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-grid fixed>
+    <ion-card-header>
+      <ion-card-subtitle>CAMBIA TU AVATAR</ion-card-subtitle>
+      <ion-card-title color="tertiary">{{avatarIdCurrent | uppercase}}</ion-card-title>
+    </ion-card-header>
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-slides [options]="avatarSlide" #aSlides>
+          <ion-slide *ngFor="let avatar of avatartCatalogList">
+            <ion-img class="pick-avatar" [src]="avatar.avatarUrl" [ngClass]="{'pick-avatar-seleccionado': avatar.selected
+                  , 'animate__bounceIn':avatar.selected}" (click)="selectAvatar(avatar)"></ion-img>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="12">
+        <form (ngSubmit)="managementUpdate(formManagementUpdate)" #formManagementUpdate="ngForm">
+          <ion-label position="stacked"></ion-label>
+          <ion-item>
+            <ion-icon slot="start" color="success" name="pencil"></ion-icon>
+            <ion-input [(ngModel)]="managementDeliveryCurrent.name" name="name" type="text" placeholder="Nombre" autocapitalize="words"
+              autocomplete="name" inputmode="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" color="success" name="call"></ion-icon>
+            <ion-input [(ngModel)]="managementDeliveryCurrent.phone" name="phone" type="tel" placeholder="Telefono" autocomplete="tel"
+              inputmode="tel" maxlength="10" minlength="10" required></ion-input>
+          </ion-item>
+          <ion-row class="ion-justify-content-center">
+            <ion-button type="submit" color="tertiary" expand="block" size="large" class="ion-margin">
+              <ion-icon slot="start" name="pencil"></ion-icon>
+              <span>Actualizar</span>
+            </ion-button>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -25,6 +25,10 @@ const routes: Routes = [
   },{
     path: 'modal-select-agent',
     loadChildren: () => import('./pages/modal-select-agent/modal-select-agent.module').then( m => m.ModalSelectAgentPageModule)
+  },
+  {
+    path: 'my-configuration',
+    loadChildren: () => import('./pages/my-configuration/my-configuration.module').then( m => m.MyConfigurationPageModule)
   }
 ];
 

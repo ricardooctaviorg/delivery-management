@@ -118,7 +118,7 @@ export class SecurityService {
     );
   }
 
-  public updateAgentDelivery(userDelivery: UserDelivery) {
+  public updateManagementDelivery(userDelivery: UserDelivery) {
 
     const headers = new HttpHeaders()
       .set('x-token', this.storageService.getToken());
