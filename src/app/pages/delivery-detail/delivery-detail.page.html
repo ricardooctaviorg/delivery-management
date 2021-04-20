@@ -14,7 +14,7 @@
       <ion-tab-button [tab]="['detailItems/',delivery.deliveryId]">
         <ion-icon name="bag"></ion-icon>
         <ion-label>PEDIDO</ion-label>
-        <ion-badge color="success">{{ totalAmount | currency:'MXN' }}</ion-badge>
+        <ion-badge color="success">{{ delivery.totalAmount | currency:'MXN' }}</ion-badge>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
